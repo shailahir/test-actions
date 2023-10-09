@@ -12,3 +12,9 @@ jobs:
     - name: REST API with curl
       run: |
         curl -X GET "https://example.com/api/v2/endpoint"
+
+  notify-backend:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Notify the Backend about the execution Status
+      run: echo "Hello"
