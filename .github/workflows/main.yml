@@ -1,6 +1,7 @@
 name: "Hit a webhook"
- 
+
 on:
+  workflow_dispatch: 
   push:
     tags:
       - '**'
