@@ -17,6 +17,7 @@ jobs:
 
   notify_backend:
     if: ${{ always() }}
+    needs: ["run_updater"]
     runs-on: ubuntu-latest
     steps: 
     - name: Notify the Backend about the execution Status
