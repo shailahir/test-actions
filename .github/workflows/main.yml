@@ -23,3 +23,15 @@ jobs:
     - name: Notify the Backend about the execution Status
       # run: echo "Hello"
       run: echo ${{ needs.run_updater.conclusion }}
+
+    - name: Notify for Success
+      if: ${{ needs.run_updater.conclusion == 'success' }}
+      run: echo "post success"
+
+    - name: Notify for Error
+      if: ${{ needs.run_updater.conclusion == 'failure' }}
+      run: echo "post error"
+
+    - name: Notify for Job Cancellation
+      if: ${{ needs.run_updater.conclusion == 'cancelled' }}
+      run: echo "post cancellation"
