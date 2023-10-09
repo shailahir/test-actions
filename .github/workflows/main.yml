@@ -26,7 +26,7 @@ jobs:
 
     - name: Notify for Success
       env:
-          JOB_CONTEXT: ${{ toJson(jobs) }}
+          JOB_CONTEXT: ${{ toJson(job) }}
       # if: ${{ needs.run_updater.conclusion == 'success' }}
       run: echo "post success $JOB_CONTEXT"
 
