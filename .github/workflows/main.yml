@@ -22,7 +22,7 @@ jobs:
     steps: 
     - name: Notify the Backend about the execution Status
       # run: echo "Hello"
-      run: echo ${{ needs.run_updater.conclusion }}
+      run: echo "${{ needs.run_updater.conclusion }}"
 
     - name: Notify for Success
       if: ${{ needs.run_updater.conclusion == 'success' }}
