@@ -25,13 +25,19 @@ jobs:
       run: echo "${{ needs.run_updater.conclusion }}"
 
     - name: Notify for Success
+      env:
+          JOB_CONTEXT: ${{ toJson(job) }}
       if: ${{ needs.run_updater.conclusion == 'success' }}
-      run: echo "post success"
+      run: echo "post success $JOB_CONTEXT"
 
     - name: Notify for Error
+      env:
+          JOB_CONTEXT: ${{ toJson(job) }}
       if: ${{ needs.run_updater.conclusion == 'failure' }}
-      run: echo "post error"
+      run: echo "post error $JOB_CONTEXT"
 
     - name: Notify for Job Cancellation
+      env:
+          JOB_CONTEXT: ${{ toJson(job) }}
       if: ${{ needs.run_updater.conclusion == 'cancelled' }}
-      run: echo "post cancellation"
+      run: echo "post cancellation $JOB_CONTEXT"
