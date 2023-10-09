@@ -27,7 +27,7 @@ jobs:
     - name: Notify for Success
       env:
           JOB_CONTEXT: ${{ toJson(job) }}
-      # if: ${{ needs.run_updater.conclusion == 'success' }}
+      if: ${{ needs.run_updater.result == 'success' }}
       run: echo "post success $JOB_CONTEXT"
 
     - name: Notify for Error
@@ -39,5 +39,5 @@ jobs:
     - name: Notify for Job Cancellation
       env:
           JOB_CONTEXT: ${{ toJson(github) }}
-      # if: ${{ needs.run_updater.conclusion == 'cancelled' }}
+      if: ${{ needs.run_updater.result == 'cancelled' }}
       run: echo "post cancellation $JOB_CONTEXT"
