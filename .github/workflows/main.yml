@@ -33,7 +33,7 @@ jobs:
     - name: Notify for Error
       env:
           JOB_CONTEXT: ${{ toJson(needs) }}
-      # if: ${{ needs.run_updater.conclusion == 'failure' }}
+      if: ${{ needs.run_updater.result == 'failure' }}
       run: echo "post error $JOB_CONTEXT"
 
     - name: Notify for Job Cancellation
