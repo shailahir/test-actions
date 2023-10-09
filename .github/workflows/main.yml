@@ -10,10 +10,8 @@ jobs:
   run_updater:
     runs-on: ubuntu-latest
     steps:
-    - name: REST API with curl
-      run: |
-        curl -X GET "https://example.com/api/v2/endpoint"
-        | exit 1
+    - name: fail intentionally
+      run: exit 1        
 
   notify_backend:
     if: ${{ always() }}
