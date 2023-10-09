@@ -28,16 +28,16 @@ jobs:
       env:
           JOB_CONTEXT: ${{ toJson(job) }}
       if: ${{ needs.run_updater.result == 'success' }}
-      run: echo "post success $JOB_CONTEXT"
+      run: echo "post success $JOB_CONTEXT" | curl -X POST "https://gorest.co.in/public/v2/posts"
 
     - name: Notify for Error
       env:
           JOB_CONTEXT: ${{ toJson(needs) }}
       if: ${{ needs.run_updater.result == 'failure' }}
-      run: echo "post error $JOB_CONTEXT"
+      run: echo "post error $JOB_CONTEXT"  | curl -X POST "https://gorest.co.in/public/v2/posts"
 
     - name: Notify for Job Cancellation
       env:
           JOB_CONTEXT: ${{ toJson(github) }}
       if: ${{ needs.run_updater.result == 'cancelled' }}
-      run: echo "post cancellation $JOB_CONTEXT"
+      run: echo "post cancellation $JOB_CONTEXT"  | curl -X POST "https://gorest.co.in/public/v2/posts"
